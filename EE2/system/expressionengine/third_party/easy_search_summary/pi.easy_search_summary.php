@@ -11,12 +11,12 @@
  */
 
 $plugin_info = array(
-	'pi_name'        => 'Easy Search Summary',
-	'pi_version'     => '1.0',
-	'pi_author'      => 'Aaron Gustafson',
+	'pi_name'		 => 'Easy Search Summary',
+	'pi_version'	 => '1.0',
+	'pi_author'		 => 'Aaron Gustafson',
 	'pi_author_url'	 => 'http://easy-designs.net/',
 	'pi_description' => 'Creates a summary from content, based on keywords',
-	'pi_usage'       => Easy_search_summary::usage()
+	'pi_usage'		 => Easy_search_summary::usage()
 );
 
 class Easy_search_summary {
@@ -73,14 +73,14 @@ class Easy_search_summary {
 			if ( strlen( $hash ) > 32 ) $hash = substr( $hash, 0, 32 );
 			$keywords = $this->EE->db->query(
 				"SELECT `keywords`
-				 FROM   `exp_search`
-				 WHERE  `search_id` = '{$this->EE->db->escape_str($hash)}'"
+				 FROM	`exp_search`
+				 WHERE	`search_id` = '{$this->EE->db->escape_str($hash)}'"
 			)->row('keywords');
 		}
 
 		# manage the keywords
 		$keywords = explode( ' ', str_replace( '+', '', $keywords ) );
-		$i     = 0;
+		$i	   = 0;
 		$temp  = array();
 		$mult  = FALSE;
 		$quote = FALSE;
@@ -116,7 +116,7 @@ class Easy_search_summary {
 		}
 		$this->keywords = $temp;
 
-		# manage the highlight string
+		# build the highlight string
 		$this->term = $this->EE->functions->var_swap( $this->term, array( 'tag' => $tag, 'class' => $class ) );
 
 		# try the primary text
