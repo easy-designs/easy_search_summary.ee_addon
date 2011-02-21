@@ -18,7 +18,7 @@
 
 $plugin_info = array(
 	'pi_name'			=> 'Search Summary',
-	'pi_version'		=> '1.0',
+	'pi_version'		=> '2.0',
 	'pi_author'			=> 'Aaron Gustafson',
 	'pi_author_url'		=> 'http://easy-designs.net/',
 	'pi_description'	=> 'Creates a summary from content, based on keywords',
