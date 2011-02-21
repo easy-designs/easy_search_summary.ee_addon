@@ -9,7 +9,7 @@
  - aaron@easy-designs.net
  This work is licensed under the MIT License.
 =====================================================
- File: pi.search_summary.php
+ File: pi.easy_search_summary.php
 -----------------------------------------------------
  Purpose: creates a summary from content, based on
  keywords
@@ -18,14 +18,14 @@
 
 $plugin_info = array(
 	'pi_name'			=> 'Search Summary',
-	'pi_version'		=> '2.0',
+	'pi_version'		=> '2.1',
 	'pi_author'			=> 'Aaron Gustafson',
 	'pi_author_url'		=> 'http://easy-designs.net/',
 	'pi_description'	=> 'Creates a summary from content, based on keywords',
 	'pi_usage'			=> Search_summary::usage()
 );
 
-class Search_summary {
+class Easy_search_summary {
 
 	var $return_data;
 	var $keywords;
@@ -35,12 +35,12 @@ class Search_summary {
 
   
 	/**
-	 * Search_summary constructor
+	 * Easy_search_summary constructor
 	 * sets any overrides and triggers the processing
 	 * 
 	 * @param str $str - the content to be parsed
 	 */
-	function Search_summary ( $str='', $keywords=array(), $html_ver=5, $class=FALSE )
+	function Easy_search_summary ( $str='', $keywords=array(), $html_ver=5, $class=FALSE )
 	{
 		
 		# get any overrides
@@ -56,7 +56,7 @@ class Search_summary {
 		if ( $temp = $TMPL->fetch_param('html_version') ) $html_ver = $temp;
 		$tag = $html_ver==5 ? 'mark' : 'strong';
 		# determine the class of the keywords
-		if ( ! $class ) $class = ( $temp = $TMPL->fetch_param('class') ) ? $temp : 'term';
+		if ( ! $class ) $class = ( $temp = $TMPL->fetch_param('highlight_class') ) ? $temp : 'term';
 		# any alternate content?
 		$alternates = array();
 		$i = 0;
@@ -141,10 +141,10 @@ class Search_summary {
 		$this->return_data = $str;
 		return $this->return_data;
 		
-	} # end Search_summary constructor
+	} # end Easy_search_summary constructor
 	
 	/**
-	 * Search_summary::process()
+	 * Easy_search_summary::process()
 	 * processes the supplied content based on the configuration
 	 * 
 	 * @param str $str - the content to be parsed
@@ -163,10 +163,10 @@ class Search_summary {
 		}
 		
 		return $str;
-	} # end Search_summary::process()
+	} # end Easy_search_summary::process()
 	  
 	/**
-	 * Search_summary::usage()
+	 * Easy_search_summary::usage()
 	 * Describes how the plugin is used
 	 */
 	function usage()
@@ -184,7 +184,7 @@ class Search_summary {
 
 	By default, each found keyword is also classified as a “term,” but you can define your own class as well:
 
-		{exp:search_summary hash="{segment_2}" class="found"}{content_body}{/exp:search_summary}
+		{exp:search_summary hash="{segment_2}" highlight_class="found"}{content_body}{/exp:search_summary}
 
 	You can also define (in order of priority) up to 10 alternate fields you’d like to summarize if a match isn’t found in the primary tag:
 

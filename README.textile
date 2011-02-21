@@ -4,7 +4,7 @@ Creates truncated search summaries that isolate searched keywords, highlighting 
 
 h2. Current Version
 
-2.0 (20 February 2011)
+2.1 (21 February 2011)
 
 h2. Requirements
 
@@ -28,7 +28,7 @@ By default, the plugin uses HTML5 <code>&lt;mark&gt;</code> elements to wrap the
 	
 By default, each found keyword is also classified as a “term,” but you can define your own class as well:
 
-<pre>{exp:search_summary hash="{segment_2}" class="found"}{content_body}{/exp:search_summary}</pre>
+<pre>{exp:search_summary hash="{segment_2}" highlight_class="found"}{content_body}{/exp:search_summary}</pre>
 
 You can also define (in order of priority) up to 10 alternate fields you’d like to summarize if a match isn’t found in the primary tag:
 

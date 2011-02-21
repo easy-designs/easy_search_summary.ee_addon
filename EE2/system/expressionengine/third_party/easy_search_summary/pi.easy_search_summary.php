@@ -12,7 +12,7 @@
 
 $plugin_info = array(
 	'pi_name'		 => 'Easy Search Summary',
-	'pi_version'	 => '2.0',
+	'pi_version'	 => '2.1',
 	'pi_author'		 => 'Aaron Gustafson',
 	'pi_author_url'	 => 'http://easy-designs.net/',
 	'pi_description' => 'Creates a summary from content, based on keywords',
@@ -58,7 +58,7 @@ class Easy_search_summary {
 		if ( $temp = $this->EE->TMPL->fetch_param('html_version') ) $html_ver = $temp;
 		$tag = $html_ver==5 ? 'mark' : 'strong';
 		# determine the class of the keywords
-		if ( ! $class ) $class = ( $temp = $this->EE->TMPL->fetch_param('class') ) ? $temp : 'term';
+		if ( ! $class ) $class = ( $temp = $this->EE->TMPL->fetch_param('highlight_class') ) ? $temp : 'term';
 		# any alternate content?
 		$alternates = array();
 		$i = 0;
