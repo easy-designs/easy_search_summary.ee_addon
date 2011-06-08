@@ -12,7 +12,7 @@
 
 $plugin_info = array(
 	'pi_name'		 => 'Easy Search Summary',
-	'pi_version'	 => '2.1',
+	'pi_version'	 => '2.2',
 	'pi_author'		 => 'Aaron Gustafson',
 	'pi_author_url'	 => 'http://easy-designs.net/',
 	'pi_description' => 'Creates a summary from content, based on keywords',
@@ -178,21 +178,21 @@ class Easy_search_summary {
 		ob_start(); ?>
 To create nice search summaries, use the following syntax:
 
-	{exp:search_summary hash="{segment_2}"}{content_body}{/exp:search_summary}
+	{exp:easy_search_summary hash="{segment_2}"}{content_body}{/exp:easy_search_summary}
 	
 Where {segment_2} is the search hash in the URL.
 
 By default, the plugin uses HTML5 <code>&lt;mark&gt;</code> elements to wrap the keywords found. You can override that by setting the html version:
 
-	{exp:search_summary hash="{segment_2}" html_version="4"}{content_body}{/exp:search_summary}
+	{exp:easy_search_summary hash="{segment_2}" html_version="4"}{content_body}{/exp:easy_search_summary}
 	
-By default, each found keyword is also classified as a “term,” but you can define your own class as well:
+By default, each found keyword is also classified as a “term,” but you can define your own <code>class</code> as well:
 
-	{exp:search_summary hash="{segment_2}" class="found"}{content_body}{/exp:search_summary}
+	{exp:easy_search_summary hash="{segment_2}" highlight_class="found"}{content_body}{/exp:easy_search_summary}
 
 You can also define (in order of priority) up to 10 alternate fields you’d like to summarize if a match isn’t found in the primary tag:
 
-	{exp:search_summary hash="{segment_2}" alternate_1="{content_sidebar}" alternate_2="{content_footer}"}{content_body}{/exp:search_summary}
+	{exp:easy_search_summary hash="{segment_2}" alternate_1="{content_sidebar}" alternate_2="{content_footer}"}{content_body}{/exp:easy_search_summary}
 
 <?php
 		$buffer = ob_get_contents();
